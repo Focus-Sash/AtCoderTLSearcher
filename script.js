@@ -15,12 +15,11 @@ window.addEventListener("load", () => {
     month: "2-digit",
     day: "2-digit"
   });
-
   const startTimeString = searchRangeStart.toLocaleTimeString("jp-JP");
+
   const startYear = startDateString.slice(0, 4);
   const startMonth = startDateString.slice(5, 7);
   const startDay = startDateString.slice(8, 10);
-
   const startHour = startTimeString.slice(0, 2);
   const startMinute = startTimeString.slice(3, 5);
   
@@ -28,7 +27,7 @@ window.addEventListener("load", () => {
   searchString += startYear + "-" + startMonth + "-" + startDay + "_";
   searchString += startHour + "%3A" + startMinute + "_JST%20until%3A";
   
-
+  // 検索範囲の終了時間を生成する
   const searchRangeEnd = searchRangeStart;
   searchRangeEnd.setHours(searchRangeEnd.getHours() + timeRange);
 
@@ -39,12 +38,10 @@ window.addEventListener("load", () => {
   });
   const endTimeString = searchRangeEnd.toLocaleTimeString("jp-JP");
 
-  console.log(endDateString);
   
   const endYear = endDateString.slice(0, 4);
   const endMonth = endDateString.slice(5, 7);
   const endDay = endDateString.slice(8, 10);
-
   const endHour = endTimeString.slice(0, 2);
   const endMinute = endTimeString.slice(3, 5);
   
@@ -52,6 +49,7 @@ window.addEventListener("load", () => {
   searchString += endHour + "%3A" + endMinute + "_JST&src=typed_query";
   
 
+  // リンクを生成する
   const listIdArray = [
     "1265268852528566273",
     "1265268943393943554",
@@ -71,24 +69,11 @@ window.addEventListener("load", () => {
     }
   }
 
+  // メニューを生成する
   const tab = document.getElementsByClassName("nav nav-tabs");
-
   const twitterIcon = document.createElement("img");
-
   const menu = document.createElement("ul");
   menu.className = "dropdown-menu";
-
-
-  // let linkArray = [
-  //   "https://twitter.com/i/lists/1265268852528566273",
-  //   "https://twitter.com/i/lists/1265268943393943554",
-  //   "https://twitter.com/i/lists/1265269023278690304",
-  //   "https://twitter.com/i/lists/1265269077888479235",
-  //   "https://twitter.com/i/lists/1265269135493099526",
-  //   "https://twitter.com/i/lists/1265269191877124101",
-  //   "https://twitter.com/i/lists/1265269251641761793",
-  //   "https://twitter.com/i/lists/1265269317169340417"
-  // ];
 
   let iconPathArray = [
     "icon/red.svg",
@@ -152,11 +137,9 @@ window.addEventListener("load", () => {
   dropDownMenu.setAttribute("aria-expanded", "false");
 
   newTab.append(dropDownMenu);
-
   newTab.append(menu);
 
 
   let lastChild = tab[0].getElementsByClassName("pull-right");
-
   tab[0].insertBefore(newTab, lastChild[0]);
 })
